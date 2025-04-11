@@ -1,8 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Packlite (Litepack)
+
+Packlite is a modern web application that helps hikers and trekkers efficiently pack for their outdoor adventures. It focuses on weight optimization, gear organization, and sharing capabilities to help users pack only what they need.
+
+## Project Overview
+
+Packlite helps outdoor enthusiasts:
+- Manage and organize gear items
+- Create and optimize packing lists for trips
+- Track and analyze pack weight
+- Share packing lists with the community
+- Find weight optimization suggestions
+
+## Features
+
+- **Gear Management**: Create, categorize, and track your outdoor equipment
+- **Trip Packing Lists**: Build customized lists for different adventures
+- **Weight Optimization**: Get insights to lighten your load
+- **Social Sharing**: Share and discover packing lists from other users
+- **User Accounts**: Track your gear and trips over time
+
+## Tech Stack
+
+- **Frontend**: React with Next.js (v15.3.0)
+- **Styling**: Tailwind CSS
+- **State Management**: React Query + Context API
+- **Backend**: Next.js API Routes with MongoDB
+- **Authentication**: NextAuth.js
+- **TypeScript**: For type safety and improved developer experience
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm, yarn, pnpm, or bun
+- MongoDB (local or Atlas connection)
+
+### Development Setup
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory with the required environment variables.
+
+4. Run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +66,46 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Docker Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project includes Docker support for easier development and deployment:
+
+```bash
+# Start the containerized application with MongoDB
+docker-compose up
+```
+
+## Project Structure
+
+- `/src/app`: Next.js app directory containing routes and pages
+- `/src/components`: Reusable React components
+- `/src/lib`: Utilities, hooks, and business logic
+- `/public`: Static assets
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [React Documentation](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [MongoDB](https://docs.mongodb.com/)
+- [NextAuth.js](https://next-auth.js.org/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+See [PRODUCTION_DEPLOYMENT.md](./PRODUCTION_DEPLOYMENT.md) for details on deploying the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
