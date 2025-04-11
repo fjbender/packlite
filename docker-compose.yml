@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  nextjs:
+    container_name: packlite-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/packlite
+      #- NEXTAUTH_URL=${NEXTAUTH_URL}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - AUTH_TRUST_HOST=${AUTH_TRUST_HOST}
+    depends_on:
+      - mongodb
+    networks:
+      - packlite-network
+
+  mongodb:
+    container_name: packlite-mongodb
+    image: mongo:6
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=packlite
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - packlite-network
+
+# We can use a bundled nginx server for production
+# In my case, I already have one running natively on the host
+#  nginx:
+#    container_name: packlite-nginx
+#    image: nginx:alpine
+#    restart: always
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - ./nginx/conf:/etc/nginx/conf.d
+#      - ./nginx/certbot/conf:/etc/letsencrypt
+#      - ./nginx/certbot/www:/var/www/certbot
+#    depends_on:
+#      - nextjs
+#    networks:
+#      - packlite-network
+
+networks:
+  packlite-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
